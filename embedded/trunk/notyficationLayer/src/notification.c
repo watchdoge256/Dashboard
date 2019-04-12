@@ -7,8 +7,6 @@
 #include "notification.h"
 #include "string.h"
 
-
-
 void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
 {
   pNotyUnit->internalCallback = callback;
@@ -29,6 +27,7 @@ bool notyficaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)
         pNtfyUnit->monUnit[pNtfyUnit->monTopPtr].baseValue,
         pNtfyUnit->monUnit[pNtfyUnit->monTopPtr].size);
 
+    pNtfyUnit->monAreaPtr+= notification->size;
     pNtfyUnit->monTopPtr++;
     ret = TRUE;
   }
@@ -40,17 +39,22 @@ void notification_Monitor(notfyUnit_t *pNotyUnit)
   uint8 i;
   for (i=0; i<pNotyUnit->monTopPtr; i++)
   {
-    if (memcmp(pNotyUnit->monUnit[i].backupValue,
-        pNotyUnit->monUnit[i].baseValue,
-        pNotyUnit->monUnit[i].size))
+    if(pNotyUnit->monUnit[i].lock == FALSE)
     {
-      memcpy(pNotyUnit->monUnit[i].backupValue,
+      pNotyUnit->monUnit[i].lock = TRUE;
+      if (memcmp(pNotyUnit->monUnit[i].backupValue,
           pNotyUnit->monUnit[i].baseValue,
-          pNotyUnit->monUnit[i].size);
-      if(pNotyUnit->internalCallback)
+          pNotyUnit->monUnit[i].size))
       {
-        pNotyUnit->internalCallback(pNotyUnit->monUnit[i].key, pNotyUnit->monUnit[i].backupValue, pNotyUnit->monUnit[i].size);
+        memcpy(pNotyUnit->monUnit[i].backupValue,
+            pNotyUnit->monUnit[i].baseValue,
+            pNotyUnit->monUnit[i].size);
+        if(pNotyUnit->internalCallback)
+        {
+          pNotyUnit->internalCallback(pNotyUnit->monUnit[i].key, pNotyUnit->monUnit[i].backupValue, pNotyUnit->monUnit[i].size);
+        }
       }
+      pNotyUnit->monUnit[i].lock = FALSE;
     }
   }
 
