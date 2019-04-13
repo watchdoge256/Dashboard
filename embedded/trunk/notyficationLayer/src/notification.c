@@ -41,7 +41,7 @@ void notification_Monitor(notfyUnit_t *pNotyUnit)
   {
     if(pNotyUnit->monUnit[i].lock == FALSE)
     {
-      pNotyUnit->monUnit[i].lock = TRUE;
+      *pNotyUnit->monUnit[i].lock = TRUE;
       if (memcmp(pNotyUnit->monUnit[i].backupValue,
           pNotyUnit->monUnit[i].baseValue,
           pNotyUnit->monUnit[i].size))
