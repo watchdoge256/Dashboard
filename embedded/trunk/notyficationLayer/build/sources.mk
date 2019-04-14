@@ -21,7 +21,8 @@ CXX_DEPS :=
 CPP_DEPS := 
 C_DEPS := 
 CPP_INC := \
--I"../../../tests"
+-I"../../../tests" \
+-I"../tests/inc"
 C_INC := \
 -I"../inc"
 
@@ -30,4 +31,5 @@ SUBDIRS := \
 gtest \
 . \
 src \
+tests/src \
 

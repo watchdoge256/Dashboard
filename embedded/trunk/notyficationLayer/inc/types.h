@@ -8,6 +8,10 @@
 #ifndef INC_TYPES_H_
 #define INC_TYPES_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define TRUE  (1)
 #define FALSE (0)
 
@@ -22,6 +26,9 @@ typedef unsigned short uint16;
 typedef short int16;
 typedef unsigned char uint8;
 typedef char int8;
-typedef char bool;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INC_TYPES_H_ */

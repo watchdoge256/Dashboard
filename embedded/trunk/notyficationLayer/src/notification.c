@@ -12,9 +12,9 @@ void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
   pNotyUnit->internalCallback = callback;
 }
 
-bool notyficaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)
+uint8 notyficaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)
 {
-  bool ret = FALSE;
+  uint8 ret = FALSE;
   if (pNtfyUnit->monTopPtr < NOTIFICATION_MONITOR_SIGNALS)
   {
     pNtfyUnit->monUnit[pNtfyUnit->monTopPtr].baseValue = notification->pMonitorAddress;

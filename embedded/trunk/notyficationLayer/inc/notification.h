@@ -39,7 +39,7 @@ typedef struct notification_Tag {
  }notfyUnit_t;
 
  extern void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback);
- extern bool notyficaiton_Register(notfyUnit_t *pNotyUnit, notification_t *notification);
+ extern uint8 notyficaiton_Register(notfyUnit_t *pNotyUnit, notification_t *notification);
  extern void notification_Monitor(notfyUnit_t *pNotyUnit);
 
 #endif /* INC_notification_H_ */
