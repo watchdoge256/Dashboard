@@ -4,11 +4,11 @@
  *  Created on: 14 kwi 2019
  *      Author: amiar
  */
-#include "notification_tests.h"
+#include "../inc/notification_com.h"
 
 #ifdef __cplusplus
 extern "C" {
-#include "notification.h"
+#include "../../inc/notification.h"
 }
 #endif
 static notfyUnit_t notfyUnit;

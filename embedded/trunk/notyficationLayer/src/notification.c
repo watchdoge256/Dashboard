@@ -4,8 +4,8 @@
  *  Created on: 12 kwi 2019
  *      Author: amiar
  */
-#include "notification.h"
 #include "string.h"
+#include "../inc/notification.h"
 
 void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
 {
