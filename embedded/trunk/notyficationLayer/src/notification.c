@@ -7,9 +7,15 @@
 #include "string.h"
 #include "../inc/notification.h"
 
-void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
+uint8 notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
 {
-  pNotyUnit->internalCallback = callback;
+  uint8 ret = FALSE;
+  if(callback)
+  {
+    pNotyUnit->internalCallback = callback;
+    ret = TRUE;
+  }
+  return ret;
 }
 
 uint8 notyficaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)

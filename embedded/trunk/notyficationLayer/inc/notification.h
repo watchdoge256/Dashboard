@@ -38,7 +38,7 @@ typedef struct notification_Tag {
    monitorUnit_t monUnit[NOTIFICATION_MONITOR_SIGNALS];
  }notfyUnit_t;
 
- extern void notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback);
+ extern uint8 notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback);
  extern uint8 notyficaiton_Register(notfyUnit_t *pNotyUnit, notification_t *notification);
  extern void notification_Monitor(notfyUnit_t *pNotyUnit);
 

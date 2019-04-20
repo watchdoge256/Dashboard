@@ -22,9 +22,13 @@ static notfyUnit_t notfyUnit;
 
 namespace
 {
-  TEST_F(ntfyTest, initTest)
+  TEST_F(ntfyTest, initTest_NULL)
   {
-    notification_Init(&notfyUnit, notify);
+    EXPECT_EQ(notification_Init(&notfyUnit, NULL), FALSE);
+  }
+  TEST_F(ntfyTest, initTest_callback)
+  {
+    EXPECT_EQ(notification_Init(&notfyUnit, notify), TRUE);
     EXPECT_EQ((void*)notfyUnit.internalCallback, (void*)notify);
   }
 }
