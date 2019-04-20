@@ -18,7 +18,7 @@ uint8 notification_Init(notfyUnit_t *pNotyUnit, notificationCallback callback)
   return ret;
 }
 
-uint8 notyficaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)
+uint8 notificaiton_Register(notfyUnit_t *pNtfyUnit, notification_t *notification)
 {
   uint8 ret = FALSE;
   if (pNtfyUnit->monTopPtr < NOTIFICATION_MONITOR_SIGNALS)
