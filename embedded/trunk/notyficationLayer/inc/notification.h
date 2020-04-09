@@ -10,11 +10,18 @@
 
 #include "types.h"
 
+// Maximum area for parameters
+// ---------------------------
 #define NOTIFICATION_MONITOR_AREA_SIZE  2048
+
+// Maximum number of signals
+// -------------------------
 #define NOTIFICATION_MONITOR_SIGNALS    10
 
 typedef void (*notificationCallback)(uint8 key, void *newValue, uint16 size);
 
+// This structure stores information about single notification
+// -----------------------------------------------------------
 typedef struct notification_Tag {
   uint8 key;
   void *pMonitorAddress;
@@ -22,6 +29,8 @@ typedef struct notification_Tag {
   uint32 size;
  }notification_t;
 
+ // This structure is used by monitor to emit publication value
+ // -----------------------------------------------------------
  typedef struct monitorUnit_Tag {
    void *baseValue;
    void *backupValue;
@@ -30,6 +39,8 @@ typedef struct notification_Tag {
    uint8 key;
  }monitorUnit_t;
 
+// This structure contains notification unit memory organization
+// -------------------------------------------------------------
  typedef struct notificationUnit_Tag {
    uint8 bkpArea[NOTIFICATION_MONITOR_AREA_SIZE];
    uint8 monTopPtr;
